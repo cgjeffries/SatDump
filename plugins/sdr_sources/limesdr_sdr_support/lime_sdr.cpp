@@ -176,6 +176,8 @@ void LimeSDRSource::start()
     limeStream = limeStreamID;
     limeStream->Start();
 #else
+    LMS_EnableChannel(limeDevice, true, channel_id, true); //fix for LimeSDR Mini V2 (see https://github.com/myriadrf/LimeSuite/commit/e353507decc7d4c525421c539fb7dbc47ab207cc)
+    
     LMS_EnableChannel(limeDevice, false, channel_id, true);
     LMS_SetAntenna(limeDevice, false, channel_id, path_id);
 
